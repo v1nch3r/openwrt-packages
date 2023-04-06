@@ -1,0 +1,49 @@
+name: armvirt64
+
+on:
+  workflow_dispatch:
+
+env:
+  REPO_SDK: https://archive.openwrt.org/snapshots/trunk/ar71xx/generic/OpenWrt-SDK-ar71xx-generic_gcc-5.3.0_musl-1.1.16.Linux-x86_64.tar.bz2
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Download sdk
+        run: |
+          wget ${REPO_SDK}
+          tar xjf OpenWrt-SDK-ar71xx-generic_gcc-5.3.0_musl-1.1.16.Linux-x86_64.tar.bz2
+          rm -f *.tar.bz2
+          mv OpenWrt-SDK-ar71xx-* openwrt
+          
+      - name: Adjust location source
+        run: mv -f luci-app-tinyfm openwrt/packages/
+      
+      - name: Updating feeds && Installing feeds
+        run: |
+          cd openwrt/
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+      
+      - name: Compile the source
+        run: |
+          mkdir -p packed
+          cd openwrt/
+          make defconfig
+          make package/luci-app-tinyfm/compile -j${nproc} V=w
+          find bin/ -type f -name '*tinyfm*' -exec mv -t ../packed {} +
+         
+      - name: Upload Package to Releases
+        uses: ncipollo/release-action@main
+        if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+        with:
+          tag: Generic
+          artifacts: "packed/*"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
