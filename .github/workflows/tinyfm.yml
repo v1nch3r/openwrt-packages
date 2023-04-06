@@ -18,7 +18,7 @@ jobs:
       - name: Download sdk
         run: |
           wget ${REPO_SDK}
-          tar xjf openwrt-*
+          tar xf openwrt-*
           rm -f *.tar.xz
           mv openwrt-* openwrt
           
