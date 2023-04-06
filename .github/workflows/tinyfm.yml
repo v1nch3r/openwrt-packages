@@ -23,7 +23,7 @@ jobs:
           mv openwrt-* openwrt
           
       - name: Adjust location source
-        run: mv -f luci-app-tinyfm openwrt/package/
+        run: mv -f luci-app-tinyfm openwrt/package/ && ls -a openwrt/package/
       
       - name: Updating feeds && Installing feeds
         run: |
