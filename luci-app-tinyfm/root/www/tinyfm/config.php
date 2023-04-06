@@ -14,7 +14,7 @@ or
 // Auth with login/password
 // set true/false to enable/disable it
 // Is independent from IP white- and blacklisting
-$use_auth = true;
+$use_auth = false;
 
 // Login user name and password
 // Users: array('Username' => 'Password', 'Username2' => 'Password2', ...)
@@ -42,15 +42,15 @@ $edit_files = true;
 
 // Default timezone for date() and time()
 // Doc - http://php.net/manual/en/timezones.php
-$default_timezone = 'Etc/UTC'; // UTC
+$default_timezone = 'UTC'; // UTC
 
 // Root path for file manager
 // use absolute path of directory i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
-$root_path = $_SERVER['DOCUMENT_ROOT'];
+$root_path = $_SERVER['DOCUMENT_ROOT'].'/tinyfm/rootfs';
 
 // Root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
 // Will not working if $root_path will be outside of server document root
-$root_url = '';
+$root_url = '/tinyfm/rootfs';
 
 // Server hostname. Can set manually if wrong
 $http_host = $_SERVER['HTTP_HOST'];
@@ -97,7 +97,7 @@ $sticky_navbar = true;
 
 
 // max upload file size
-$max_upload_size_bytes = 5000;
+$max_upload_size_bytes = 500000;
 
 // Possible rules are 'OFF', 'AND' or 'OR'
 // OFF => Don't check connection IP, defaults to OFF
@@ -110,6 +110,7 @@ $ip_silent = true;
 
 // IP-addresses, both ipv4 and ipv6
 $ip_whitelist = array(
+    '192.168.1.1',    // local ipv4
     '127.0.0.1',    // local ipv4
     '::1'           // local ipv6
 );
