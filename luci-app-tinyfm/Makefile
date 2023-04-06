@@ -13,7 +13,7 @@ LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+php7 +php7-cgi +php7-mod-session +php7-mod-ctype +php7-mod-fileinfo +php7-mod-zip +php7-mod-iconv +php7-mod-json +php7-mod-mbstring +zoneinfo-asia 
 
 PKG_NAME:=luci-app-tinyfm
-PKG_VERSION:=1.0
+PKG_VERSION:=1.2
 PKG_RELEASE:=1
 
 define Package/$(PKG_NAME)
