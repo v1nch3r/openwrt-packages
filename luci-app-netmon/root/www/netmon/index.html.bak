@@ -17,7 +17,7 @@
 </head>
 <body>
   <main class="wrap">
-    <h3>Network Monitor</h3>
+    <h3>Net Monitor</h3>
 <center>
 	   <div data-netdata="net.eth1"
 			data-title="Modem"
