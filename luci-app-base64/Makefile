@@ -13,7 +13,7 @@ LUCI_PKGARCH:=all
 LUCI_DEPENDS:=+php7 +php7-cgi
 
 PKG_NAME:=luci-app-base64
-PKG_VERSION:=1.0
+PKG_VERSION:=1.2
 PKG_RELEASE:=1
 
 define Package/$(PKG_NAME)
