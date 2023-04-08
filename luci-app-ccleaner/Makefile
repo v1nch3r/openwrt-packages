@@ -5,7 +5,7 @@
 
 include $(TOPDIR)/rules.mk
 
-LUCI_TITLE:=LuCI Clear Cache Your Router in One-Click
+LUCI_TITLE:=LuCI Clear Cache Openwrt in One-Click
 LUCI_PKGARCH:=all
 PKG_NAME:=luci-app-ccleaner
 PKG_VERSION:=1.0
