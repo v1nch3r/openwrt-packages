@@ -20,7 +20,7 @@ $type = $_POST['type'];
 <html>
 <head>
 	<title>Base64 D/E</title>
-<link rel="stylesheet" href="/cdn/base64.min.css">
+<link rel="stylesheet" href="/base64/cdn/base64.min.css">
 </head>
 <body>
 <div id="get-height-foramp" class=" container-fluid">
