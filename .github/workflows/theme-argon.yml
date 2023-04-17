@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_SDK: https://downloads.openwrt.org/releases/21.02.5/targets/x86/64/openwrt-sdk-21.02.5-x86-64_gcc-8.4.0_musl.Linux-x86_64.tar.xz
+  REPO_SDK: https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-12.2.0_musl.Linux-x86_64.tar.xz
 
 jobs:
   build:
