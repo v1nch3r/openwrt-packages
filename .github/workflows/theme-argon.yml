@@ -1,4 +1,4 @@
-name: theme-argon
+name: argon-config
 
 on:
   workflow_dispatch:
@@ -39,7 +39,7 @@ jobs:
           cd openwrt/
           make defconfig
           make package/luci-app-argon-config/compile -j${nproc} V=w
-          find bin/ -type f -name '*argon*' -exec mv -t ../packed {} +
+          find bin/ -type f -name '*argon-config*' -exec mv -t ../packed {} +
          
       - name: Upload Package to Releases
         uses: ncipollo/release-action@main
