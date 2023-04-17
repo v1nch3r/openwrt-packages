@@ -11,6 +11,6 @@ LUCI_DEPENDS:=+wget +jsonfilter
 PKG_VERSION:=2.2.9.5
 PKG_RELEASE:=20230116
 
-include ../../luci.mk
+include $(TOPDIR)/feeds/luci/luci.mk
 
 # call BuildPackage - OpenWrt buildroot signature
