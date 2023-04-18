@@ -1,5 +1,5 @@
 'use strict'; 'require rpc';
-var callLuciETHInfo = rpc.declare({ object: 'luci', method: 'getETHInfo', expect: { '': {} } });
+var callLuciETHInfo = rpc.declare({ object: 'luci.ethernet-status', method: 'getETHInfo', expect: { '': {} } });
 return L.Class.extend({
     title: _('Ethernet Information'),
     load: function () { return Promise.all([L.resolveDefault(callLuciETHInfo(), {})]); },

@@ -1,9 +1,9 @@
 {
-	"luci-mod-status-autocore": {
-		"description": "Grant access to autocore",
+	"luci-app-ethernet-status": {
+		"description": "Grant access to ethernet-status",
 		"read": {
 			"ubus": {
-				"luci": [ "getETHInfo" ]
+				"luci.ethernet-status": [ "getETHInfo" ]
 			}
 		}
 	}
