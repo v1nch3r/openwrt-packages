@@ -33,6 +33,11 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
+      - name: Disable csstidy
+        run: |
+          cd openwrt/
+          echo "# CONFIG_LUCI_CSSTIDY is not set" >> .config
+      
       - name: Compile the source
         run: |
           mkdir -p packed
