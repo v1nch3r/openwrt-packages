@@ -23,7 +23,7 @@ jobs:
           mv openwrt-* openwrt
           
       - name: Adjust location source
-        run: mv -f luci-app-temp-status openwrt/package/ && ls -a openwrt/package/
+        run: mv -f luci-app-ethernet-status openwrt/package/ && ls -a openwrt/package/
       
       - name: Updating feeds && Installing feeds
         run: |
