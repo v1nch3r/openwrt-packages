@@ -6,7 +6,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_VERSION:=1.0
+PKG_VERSION:=1.1
 LUCI_TITLE:=Ethernet data infomation for the LuCI status page
 LUCI_DEPENDS:=+lua +luci-lib-nixio +luci-lib-jsonc
 LUCI_PKGARCH:=all
