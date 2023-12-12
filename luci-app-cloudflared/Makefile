@@ -11,7 +11,7 @@ PKG_VERSION:=1.0.1-20232507
 PKG_MAINTAINER:=<https://github.com/animegasan>
 
 LUCI_TITLE:=LuCI for Cloudflared
-LUCI_DEPENDS:=+cloudflared
+# LUCI_DEPENDS:=+cloudflared
 LUCI_PKGARCH:=all
 LUCI_DESCRIPTION:=LuCI support for Cloudflared
 
