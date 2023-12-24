@@ -45,7 +45,7 @@ jobs:
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
         with:
-          tag: generic
+          tag: 23.05-generic
           artifacts: "packed/*"
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
