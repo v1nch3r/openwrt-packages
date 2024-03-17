@@ -1,0 +1,50 @@
+name: pppoe-server
+
+on:
+  workflow_dispatch:
+
+env:
+  REPO_SDK: https://downloads.openwrt.org/releases/23.05.2/targets/armsr/armv8/openwrt-sdk-23.05.2-armsr-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Download sdk
+        run: |
+          wget ${REPO_SDK}
+          tar xf openwrt-*
+          rm -f *.tar.xz
+          mv openwrt-* openwrt
+          
+      - name: Adjust location source
+        run: |
+          mv -f luci-app-pppoe-server openwrt/package/ && ls -a openwrt/package/
+      
+      - name: Updating feeds && Installing feeds
+        run: |
+          cd openwrt/
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+      
+      - name: Compile the source
+        run: |
+          mkdir -p packed
+          cd openwrt/
+          make defconfig
+          make package/luci-app-pppoe-server/compile -j${nproc} V=w
+          find bin/ -type f -name 'luci-app-pppoe-server*' -exec mv -t ../packed {} +
+         
+      - name: Upload Package to Releases
+        uses: ncipollo/release-action@main
+        if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+        with:
+          tag: 23.05-generic
+          artifacts: "packed/*"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
